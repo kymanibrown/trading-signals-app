@@ -1,0 +1,16 @@
+name: trading-signals-app
+services:
+- name: web
+  source_dir: /
+  github:
+    repo: kymanibrown/trading-signals-app
+    branch: main
+  run_command: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+  environment_slug: python
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /
+  envs:
+  - key: PYTHON_VERSION
+    value: "3.9"
